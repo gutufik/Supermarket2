@@ -9,6 +9,22 @@
       Title="ClientsPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="lvClients" ItemsSource="{Binding Clients}" SelectionChanged="lvClients_SelectionChanged" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock FontSize="18">
+                        <Run Text="{Binding LastName}"/>
+                        <Run Text="{Binding FirstName}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="btnAdd" Content="Добавить" 
+                HorizontalAlignment="Center"
+                Grid.Row="1" Click="btnAdd_Click"/>
     </Grid>
 </Page>

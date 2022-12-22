@@ -9,6 +9,52 @@
       Title="ClientPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Фамилия" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontSize="20" Margin="10"/>
+        <TextBox Text="{Binding Client.LastName}" Grid.Column="1" 
+                  FontSize="18" Margin="10"/>
+        <TextBlock Text="Имя" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Grid.Row="1"
+                   FontSize="20" Margin="10"/>
+        <TextBox Text="{Binding Client.FirstName}" Grid.Column="1" 
+                 Grid.Row="1"
+                  FontSize="18" Margin="10"/>
+
+        <TextBlock Text="Вид оплаты" FontSize="20" Margin="10" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Grid.Row="2" Grid.Column="0"/>
+        <ComboBox SelectedItem="{Binding Client.PaymentType}" ItemsSource="{Binding PaymentTypes}" 
+                   FontSize="18" Margin="10"
+                  DisplayMemberPath="Name"
+                  Grid.Row="2" Grid.Column="1"/>
+
+
+        <TextBlock Text="Адрес" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Grid.Row="3"
+                   FontSize="20" Margin="10"/>
+        <TextBox Text="{Binding Client.Address}"
+                 Grid.Column="1" Grid.Row="3"
+                  FontSize="18" Margin="10"/>
+
+        <Button x:Name="btnDelete" Content="Удалить"
+                Grid.Row="4" Click="btnDelete_Click"/>
+        <Button x:Name="btnSave" Content="Сохранить"
+                Grid.Row="4" Grid.Column="1" Click="btnSave_Click"/>
+
     </Grid>
 </Page>
