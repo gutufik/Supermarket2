@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Supermarket.DataBase;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,39 @@ namespace Supermarket.Pages
     /// </summary>
     public partial class SupplierPage : Page
     {
-        public SupplierPage()
+        public Supplier Supplier { get; set; }
+        public List<TransportType> TransportTypes { get; set; }
+        public List<PaymentType> PaymentTypes { get; set; }
+        public SupplierPage(Supplier supplier)
         {
             InitializeComponent();
+            Supplier = supplier;
+            TransportTypes = DataAccess.GetTransportTypes();
+            PaymentTypes = DataAccess.GetPaymentTypes();
+
+            DataContext = this;
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Выбранный продукт будет удален. Продолжить?", "Предупреждение", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
+            {
+                DataAccess.DeleteSupplier(Supplier);
+                NavigationService.GoBack();
+            }
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DataAccess.SaveSupplier(Supplier);
+                NavigationService.GoBack();
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно сохранить изменения, допущены ошибки в заполнении", "Предупреждение");
+            }
         }
     }
 }

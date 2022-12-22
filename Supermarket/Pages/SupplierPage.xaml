@@ -9,6 +9,61 @@
       Title="SupplierPage">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Название" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontSize="20" Margin="10"/>
+        <TextBox Text="{Binding Supplier.Name}" Grid.Column="1" 
+                  FontSize="18" Margin="10"/>
+        <TextBlock Text="Страна" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Grid.Row="1"
+                   FontSize="20" Margin="10"/>
+        <TextBox Text="{Binding Supplier.Country}" Grid.Column="1" 
+                 Grid.Row="1"
+                  FontSize="18" Margin="10"/>
+
+        <TextBlock Text="Вид оплаты" FontSize="20" Margin="10" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Grid.Row="2" Grid.Column="0"/>
         
+        <ComboBox SelectedItem="{Binding Supplier.PaymentType}" ItemsSource="{Binding PaymentTypes}" 
+                   FontSize="18" Margin="10"
+                  DisplayMemberPath="Name"
+                  Grid.Row="2" Grid.Column="1"/>
+
+
+        <TextBlock Text="Адрес" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Grid.Row="3"
+                   FontSize="20" Margin="10"/>
+        <TextBox Text="{Binding Supplier.Address}"
+                 Grid.Column="1" Grid.Row="3"
+                  FontSize="18" Margin="10"/>
+
+        <TextBlock Text="Вид транспорта" FontSize="20" Margin="10" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Grid.Row="4" Grid.Column="0"/>
+        <ComboBox SelectedItem="{Binding Supplier.TransportType}" ItemsSource="{Binding TransportTypes}" 
+                   FontSize="18" Margin="10"
+                  DisplayMemberPath="Name"
+                  Grid.Row="4" Grid.Column="1"/>
+
+        <Button x:Name="btnDelete" Content="Удалить"
+                Grid.Row="5" Click="btnDelete_Click"/>
+        <Button x:Name="btnSave" Content="Сохранить"
+                Grid.Row="5" Grid.Column="1" Click="btnSave_Click"/>
     </Grid>
 </Page>

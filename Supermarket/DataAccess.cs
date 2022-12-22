@@ -52,5 +52,21 @@ namespace Supermarket
             SupermarketEntities.GetContext().SaveChanges();
             RefreshListsEvent?.Invoke();
         }
+
+        internal static void DeleteSupplier(Supplier supplier)
+        {
+            SupermarketEntities.GetContext().Suppliers.Remove(supplier);
+            SupermarketEntities.GetContext().SaveChanges();
+            RefreshListsEvent?.Invoke();
+        }
+
+        internal static void SaveSupplier(Supplier supplier)
+        {
+            if (supplier.Id == 0)
+                SupermarketEntities.GetContext().Suppliers.Add(supplier);
+
+            SupermarketEntities.GetContext().SaveChanges();
+            RefreshListsEvent?.Invoke();
+        }
     }
 }
