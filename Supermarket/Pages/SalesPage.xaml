@@ -9,6 +9,22 @@
       Title="SalesPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="lvSales" ItemsSource="{Binding Sales}" SelectionChanged="lvSales_SelectionChanged" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock FontSize="18">
+                        <Run Text="{Binding Date, ConverterCulture=ru}"/>
+                        <Run Text="{Binding Client.LastName}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="btnAdd" Content="Добавить" 
+                HorizontalAlignment="Center"
+                Grid.Row="1" Click="btnAdd_Click"/>
     </Grid>
 </Page>

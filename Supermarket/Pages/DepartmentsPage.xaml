@@ -9,6 +9,22 @@
       Title="DepartmentsPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="lvDepartments" ItemsSource="{Binding Departments}" SelectionChanged="lvDepartments_SelectionChanged" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock FontSize="18">
+                        <Run Text="{Binding Name}"/>
+                        <Run Text="{Binding Price}"/>
+                    </TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="btnAdd" Content="Добавить" 
+                HorizontalAlignment="Center"
+                Grid.Row="1" Click="btnAdd_Click"/>
     </Grid>
 </Page>

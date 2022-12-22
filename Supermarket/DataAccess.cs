@@ -68,5 +68,37 @@ namespace Supermarket
             SupermarketEntities.GetContext().SaveChanges();
             RefreshListsEvent?.Invoke();
         }
+
+        internal static void SaveDepartment(Department department)
+        {
+            if (department.Id == 0)
+                SupermarketEntities.GetContext().Departments.Add(department);
+
+            SupermarketEntities.GetContext().SaveChanges();
+            RefreshListsEvent?.Invoke();
+        }
+
+        internal static void DeleteDepartment(Department department)
+        {
+            SupermarketEntities.GetContext().Departments.Remove(department);
+            SupermarketEntities.GetContext().SaveChanges();
+            RefreshListsEvent?.Invoke();
+        }
+
+        internal static void DeleteSale(Sale sale)
+        {
+            SupermarketEntities.GetContext().Sales.Remove(sale);
+            SupermarketEntities.GetContext().SaveChanges();
+            RefreshListsEvent?.Invoke();
+        }
+
+        internal static void SaveSale(Sale sale)
+        {
+            if (sale.Id == 0)
+                SupermarketEntities.GetContext().Sales.Add(sale);
+
+            SupermarketEntities.GetContext().SaveChanges();
+            RefreshListsEvent?.Invoke();
+        }
     }
 }

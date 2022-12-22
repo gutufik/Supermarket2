@@ -9,6 +9,53 @@
       Title="SalePage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Покупатель" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   FontSize="20" Margin="10"/>
+        <ComboBox x:Name="cbClient" 
+            ItemsSource="{Binding Clients}" 
+                   SelectedItem="{Binding Sale.Client}"
+                   FontSize="18" Margin="10"
+                  DisplayMemberPath="LastName"
+                  Grid.Row="0" Grid.Column="1"/>
+
+        <TextBlock Text="Продукты" FontSize="20" Margin="10" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center" 
+                   Grid.Row="1" Grid.Column="0"/>
+        <ComboBox  x:Name="cbProduct"
+                    ItemsSource="{Binding Products}"
+                   SelectionChanged="cbProduct_SelectionChanged"
+                   FontSize="18" Margin="10"
+                  DisplayMemberPath="Name"
+                  Grid.Row="1" Grid.Column="1"/>
+
+        <ListView x:Name="lvProducts" ItemsSource="{Binding Sale.SaleProducts}"
+                  Grid.Row="2" Grid.RowSpan="2"
+                  Grid.ColumnSpan="2">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Product.Name}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
+        <Button x:Name="btnDelete" Content="Удалить"
+                Grid.Row="4" Click="btnDelete_Click"/>
+        <Button x:Name="btnSave" Content="Сохранить"
+                Grid.Row="4" Grid.Column="1" Click="btnSave_Click"/>
     </Grid>
 </Page>

@@ -39,7 +39,7 @@
                    HorizontalAlignment="Center" VerticalAlignment="Center" 
                    Grid.Row="2"
                    FontSize="20" Margin="10"/>
-        <TextBox Text="{Binding Product.StorageCondidtion}"
+        <TextBox Text="{Binding Product.StorageCondition}"
                  Grid.Column="1" Grid.Row="2"
                   FontSize="18" Margin="10"/>
         
